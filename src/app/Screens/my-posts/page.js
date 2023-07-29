@@ -1,7 +1,7 @@
 "use client";
 import { deletePost } from "@/graphql/mutations";
 import { postsByUsername } from "@/graphql/queries";
-import { API, Auth } from "aws-amplify";
+import { API, Auth, Storage } from "aws-amplify";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useState, useEffect } from "react";
@@ -27,7 +27,20 @@ const MyPosts = () => {
         query: postsByUsername,
         variables: { username },
       });
-      setPosts(postData.data.postsByUsername.items);
+      const PostWithImages = await Promise.all(
+        postData.data.postsByUsername.items.map(async (post) => {
+          try {
+            let imageUrl = null;
+            if (post.coverImage) {
+              imageUrl = await Storage.get(post.coverImage);
+            }
+            return { ...post, imageUrl };
+          } catch (error) {
+            throw new Error();
+          }
+        })
+      );
+      setPosts(PostWithImages);
     } catch (error) {
       console.log("Error occured: " + error);
     }
@@ -53,9 +66,14 @@ const MyPosts = () => {
       {posts.map((post, index) => (
         <div>
           <Link key={index} href={"/Screens/" + post.id}>
-            <div className="cursor-pointer border-b border-gray-500 mt-8 pb-4">
-              <h2 className="text-xl font-semibold"> {post.title}</h2>
-              <p className="text-gray-500 mt-2"> Author: {post.username}</p>
+            <div className="cursor-pointer border-b border-gray-500 mt-8 pb-4 flex">
+              {post.imageUrl && (
+                <img src={post.imageUrl} className="w-24 h-24 object-cover" />
+              )}
+              <div className="mx-16">
+                <h2 className="text-xl font-semibold mb-4"> {post.title}</h2>
+                <p className="text-gray-500 mt-2"> Author: {post.username}</p>
+              </div>
             </div>
           </Link>
           <button

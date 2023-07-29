@@ -86,8 +86,13 @@ const Navbar = () => {
               >
                 <div className="!text-white dark:text-gray-320 lg:pr-4 lg:w-auto w-full lg:pt-0">
                   <ul className="tracking-wide font-medium lg:text-sm flex-col flex lg:flex-row gap-10 <">
+                    <Link
+                      className="text-2xl rounded-lg py-2 hover:text-secondary transition duration-500"
+                      href={"/"}
+                    >
+                      Home
+                    </Link>
                     {[
-                      ["Home", "/"],
                       ["Create Post", "/create-post"],
                       ["Profile", "/profile"],
                     ].map(([title, url], index) => {
