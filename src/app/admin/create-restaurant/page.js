@@ -25,7 +25,7 @@ const page = () => {
   const router = useRouter();
   const imageFileInput = useRef(null);
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: "AIzaSyBzIema2xrlgMpXoEdBv2uZ2TJ8R2gRlYs",
+    googleMapsApiKey: "",
     libraries: ["places"],
   });
   const [selectedCoords, setSelectedCoords] = useState(null);
