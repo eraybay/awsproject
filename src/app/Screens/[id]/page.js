@@ -318,7 +318,7 @@ const RestaurantPage = ({ params }) => {
           <hr className="mt-3" />
         </div>
         <div className="border-4 border-secondary ">
-          <LoadScript googleMapsApiKey="AIzaSyBzIema2xrlgMpXoEdBv2uZ2TJ8R2gRlYs">
+          <LoadScript googleMapsApiKey="">
             <GoogleMap
               mapContainerStyle={{ width: "100%", height: "100%" }}
               center={{ lat: restaurant.lat, lng: restaurant.lng }}
