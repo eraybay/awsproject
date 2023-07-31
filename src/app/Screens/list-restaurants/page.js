@@ -311,7 +311,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="bg-black w-full h-full col-span-3">
-                <LoadScript googleMapsApiKey="AIzaSyBzIema2xrlgMpXoEdBv2uZ2TJ8R2gRlYs">
+                <LoadScript googleMapsApiKey="">
                   <GoogleMap
                     mapContainerStyle={{ width: "100%", height: "100%" }}
                     center={{ lat: restaurant.lat, lng: restaurant.lng }}
