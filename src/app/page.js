@@ -29,7 +29,7 @@ export default function Home({ location }) {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: "AIzaSyBzIema2xrlgMpXoEdBv2uZ2TJ8R2gRlYs",
+    googleMapsApiKey: "",
     libraries: ["places"],
   });
 
