@@ -1,90 +1,138 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const onCreatePost = /* GraphQL */ `
-  subscription OnCreatePost(
-    $filter: ModelSubscriptionPostFilterInput
+export const onCreateRestaurant = /* GraphQL */ `
+  subscription OnCreateRestaurant(
+    $filter: ModelSubscriptionRestaurantFilterInput
     $username: String
   ) {
-    onCreatePost(filter: $filter, username: $username) {
+    onCreateRestaurant(filter: $filter, username: $username) {
       id
       title
       content
       username
-      coverImage
+      generalImages
       comments {
         items {
           id
           message
-          postID
+          restaurantID
           createdAt
           updatedAt
-          createdBy
+          postedBy
           __typename
         }
         nextToken
         __typename
       }
+      rates {
+        items {
+          id
+          rate_value
+          restaurantID
+          createdAt
+          updatedAt
+          ratedBy
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      lat
+      lng
+      price
       createdAt
       updatedAt
       __typename
     }
   }
 `;
-export const onUpdatePost = /* GraphQL */ `
-  subscription OnUpdatePost(
-    $filter: ModelSubscriptionPostFilterInput
+export const onUpdateRestaurant = /* GraphQL */ `
+  subscription OnUpdateRestaurant(
+    $filter: ModelSubscriptionRestaurantFilterInput
     $username: String
   ) {
-    onUpdatePost(filter: $filter, username: $username) {
+    onUpdateRestaurant(filter: $filter, username: $username) {
       id
       title
       content
       username
-      coverImage
+      generalImages
       comments {
         items {
           id
           message
-          postID
+          restaurantID
           createdAt
           updatedAt
-          createdBy
+          postedBy
           __typename
         }
         nextToken
         __typename
       }
+      rates {
+        items {
+          id
+          rate_value
+          restaurantID
+          createdAt
+          updatedAt
+          ratedBy
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      lat
+      lng
+      price
       createdAt
       updatedAt
       __typename
     }
   }
 `;
-export const onDeletePost = /* GraphQL */ `
-  subscription OnDeletePost(
-    $filter: ModelSubscriptionPostFilterInput
+export const onDeleteRestaurant = /* GraphQL */ `
+  subscription OnDeleteRestaurant(
+    $filter: ModelSubscriptionRestaurantFilterInput
     $username: String
   ) {
-    onDeletePost(filter: $filter, username: $username) {
+    onDeleteRestaurant(filter: $filter, username: $username) {
       id
       title
       content
       username
-      coverImage
+      generalImages
       comments {
         items {
           id
           message
-          postID
+          restaurantID
           createdAt
           updatedAt
-          createdBy
+          postedBy
           __typename
         }
         nextToken
         __typename
       }
+      rates {
+        items {
+          id
+          rate_value
+          restaurantID
+          createdAt
+          updatedAt
+          ratedBy
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      lat
+      lng
+      price
       createdAt
       updatedAt
       __typename
@@ -94,29 +142,36 @@ export const onDeletePost = /* GraphQL */ `
 export const onCreateComment = /* GraphQL */ `
   subscription OnCreateComment(
     $filter: ModelSubscriptionCommentFilterInput
-    $createdBy: String
+    $postedBy: String
   ) {
-    onCreateComment(filter: $filter, createdBy: $createdBy) {
+    onCreateComment(filter: $filter, postedBy: $postedBy) {
       id
       message
-      post {
+      restaurant {
         id
         title
         content
         username
-        coverImage
+        generalImages
         comments {
           nextToken
           __typename
         }
+        rates {
+          nextToken
+          __typename
+        }
+        lat
+        lng
+        price
         createdAt
         updatedAt
         __typename
       }
-      postID
+      restaurantID
       createdAt
       updatedAt
-      createdBy
+      postedBy
       __typename
     }
   }
@@ -124,29 +179,36 @@ export const onCreateComment = /* GraphQL */ `
 export const onUpdateComment = /* GraphQL */ `
   subscription OnUpdateComment(
     $filter: ModelSubscriptionCommentFilterInput
-    $createdBy: String
+    $postedBy: String
   ) {
-    onUpdateComment(filter: $filter, createdBy: $createdBy) {
+    onUpdateComment(filter: $filter, postedBy: $postedBy) {
       id
       message
-      post {
+      restaurant {
         id
         title
         content
         username
-        coverImage
+        generalImages
         comments {
           nextToken
           __typename
         }
+        rates {
+          nextToken
+          __typename
+        }
+        lat
+        lng
+        price
         createdAt
         updatedAt
         __typename
       }
-      postID
+      restaurantID
       createdAt
       updatedAt
-      createdBy
+      postedBy
       __typename
     }
   }
@@ -154,29 +216,147 @@ export const onUpdateComment = /* GraphQL */ `
 export const onDeleteComment = /* GraphQL */ `
   subscription OnDeleteComment(
     $filter: ModelSubscriptionCommentFilterInput
-    $createdBy: String
+    $postedBy: String
   ) {
-    onDeleteComment(filter: $filter, createdBy: $createdBy) {
+    onDeleteComment(filter: $filter, postedBy: $postedBy) {
       id
       message
-      post {
+      restaurant {
         id
         title
         content
         username
-        coverImage
+        generalImages
         comments {
           nextToken
           __typename
         }
+        rates {
+          nextToken
+          __typename
+        }
+        lat
+        lng
+        price
         createdAt
         updatedAt
         __typename
       }
-      postID
+      restaurantID
       createdAt
       updatedAt
-      createdBy
+      postedBy
+      __typename
+    }
+  }
+`;
+export const onCreateRate = /* GraphQL */ `
+  subscription OnCreateRate(
+    $filter: ModelSubscriptionRateFilterInput
+    $ratedBy: String
+  ) {
+    onCreateRate(filter: $filter, ratedBy: $ratedBy) {
+      id
+      rate_value
+      restaurant {
+        id
+        title
+        content
+        username
+        generalImages
+        comments {
+          nextToken
+          __typename
+        }
+        rates {
+          nextToken
+          __typename
+        }
+        lat
+        lng
+        price
+        createdAt
+        updatedAt
+        __typename
+      }
+      restaurantID
+      createdAt
+      updatedAt
+      ratedBy
+      __typename
+    }
+  }
+`;
+export const onUpdateRate = /* GraphQL */ `
+  subscription OnUpdateRate(
+    $filter: ModelSubscriptionRateFilterInput
+    $ratedBy: String
+  ) {
+    onUpdateRate(filter: $filter, ratedBy: $ratedBy) {
+      id
+      rate_value
+      restaurant {
+        id
+        title
+        content
+        username
+        generalImages
+        comments {
+          nextToken
+          __typename
+        }
+        rates {
+          nextToken
+          __typename
+        }
+        lat
+        lng
+        price
+        createdAt
+        updatedAt
+        __typename
+      }
+      restaurantID
+      createdAt
+      updatedAt
+      ratedBy
+      __typename
+    }
+  }
+`;
+export const onDeleteRate = /* GraphQL */ `
+  subscription OnDeleteRate(
+    $filter: ModelSubscriptionRateFilterInput
+    $ratedBy: String
+  ) {
+    onDeleteRate(filter: $filter, ratedBy: $ratedBy) {
+      id
+      rate_value
+      restaurant {
+        id
+        title
+        content
+        username
+        generalImages
+        comments {
+          nextToken
+          __typename
+        }
+        rates {
+          nextToken
+          __typename
+        }
+        lat
+        lng
+        price
+        createdAt
+        updatedAt
+        __typename
+      }
+      restaurantID
+      createdAt
+      updatedAt
+      ratedBy
       __typename
     }
   }

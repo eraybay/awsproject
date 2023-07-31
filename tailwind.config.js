@@ -4,21 +4,25 @@ module.exports = {
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./node_modules/flowbite/**/*.js",
   ],
   theme: {
     extend: {
+      fontFamily: {
+        primary: ["var(--font-noto-serif)"],
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       colors: {
-        primary: "#6EE7B7",
-        secondary: "#084C61",
-        third: "#4F6D7A",
-        forth: "#EDDDD4",
+        primary: "#DAD0C4",
+        secondary: "#008000",
+        third: "#474647",
+        forth: "#f2a08b",
       },
     },
   },
-  plugins: [],
+  plugins: [require("daisyui"), require("flowbite/plugin")],
 };

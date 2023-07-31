@@ -1,3 +1,4 @@
+import Footer from "../Components/Footer";
 import Navbar from "../Components/Navbar";
 
 export default function DashboardLayout({
@@ -5,8 +6,7 @@ export default function DashboardLayout({
 }) {
   return (
     <div>
-      <Navbar />
-      <section className="mx-24 my-24">
+      <section className="mx-24 my-8">
         {/* Include shared UI here e.g. a header or sidebar */}
 
         {children}

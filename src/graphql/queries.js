@@ -1,57 +1,91 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const getPost = /* GraphQL */ `
-  query GetPost($id: ID!) {
-    getPost(id: $id) {
+export const getRestaurant = /* GraphQL */ `
+  query GetRestaurant($id: ID!) {
+    getRestaurant(id: $id) {
       id
       title
       content
       username
-      coverImage
+      generalImages
       comments {
         items {
           id
           message
-          postID
+          restaurantID
           createdAt
           updatedAt
-          createdBy
+          postedBy
           __typename
         }
         nextToken
         __typename
       }
+      rates {
+        items {
+          id
+          rate_value
+          restaurantID
+          createdAt
+          updatedAt
+          ratedBy
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      lat
+      lng
+      price
       createdAt
       updatedAt
       __typename
     }
   }
 `;
-export const listPosts = /* GraphQL */ `
-  query ListPosts(
-    $filter: ModelPostFilterInput
+export const listRestaurants = /* GraphQL */ `
+  query ListRestaurants(
+    $filter: ModelRestaurantFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    listPosts(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    listRestaurants(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
         title
         content
         username
-        coverImage
+        generalImages
         comments {
           items {
             id
             message
-            postID
+            restaurantID
             createdAt
             updatedAt
-            createdBy
+            postedBy
             __typename
           }
+          nextToken
+          __typename
         }
+        rates {
+          items {
+            id
+            rate_value
+            restaurantID
+            createdAt
+            updatedAt
+            ratedBy
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        lat
+        lng
+        price
         createdAt
         updatedAt
         __typename
@@ -61,15 +95,15 @@ export const listPosts = /* GraphQL */ `
     }
   }
 `;
-export const postsByUsername = /* GraphQL */ `
-  query PostsByUsername(
+export const restaurantByUsername = /* GraphQL */ `
+  query RestaurantByUsername(
     $username: String!
     $sortDirection: ModelSortDirection
-    $filter: ModelPostFilterInput
+    $filter: ModelRestaurantFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    postsByUsername(
+    restaurantByUsername(
       username: $username
       sortDirection: $sortDirection
       filter: $filter
@@ -81,11 +115,18 @@ export const postsByUsername = /* GraphQL */ `
         title
         content
         username
-        coverImage
+        generalImages
         comments {
           nextToken
           __typename
         }
+        rates {
+          nextToken
+          __typename
+        }
+        lat
+        lng
+        price
         createdAt
         updatedAt
         __typename
@@ -100,24 +141,31 @@ export const getComment = /* GraphQL */ `
     getComment(id: $id) {
       id
       message
-      post {
+      restaurant {
         id
         title
         content
         username
-        coverImage
+        generalImages
         comments {
           nextToken
           __typename
         }
+        rates {
+          nextToken
+          __typename
+        }
+        lat
+        lng
+        price
         createdAt
         updatedAt
         __typename
       }
-      postID
+      restaurantID
       createdAt
       updatedAt
-      createdBy
+      postedBy
       __typename
     }
   }
@@ -132,20 +180,23 @@ export const listComments = /* GraphQL */ `
       items {
         id
         message
-        post {
+        restaurant {
           id
           title
           content
           username
-          coverImage
+          generalImages
+          lat
+          lng
+          price
           createdAt
           updatedAt
           __typename
         }
-        postID
+        restaurantID
         createdAt
         updatedAt
-        createdBy
+        postedBy
         __typename
       }
       nextToken
@@ -153,16 +204,16 @@ export const listComments = /* GraphQL */ `
     }
   }
 `;
-export const commentsByPostID = /* GraphQL */ `
-  query CommentsByPostID(
-    $postID: ID!
+export const commentsByRestaurantID = /* GraphQL */ `
+  query CommentsByRestaurantID(
+    $restaurantID: ID!
     $sortDirection: ModelSortDirection
     $filter: ModelCommentFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    commentsByPostID(
-      postID: $postID
+    commentsByRestaurantID(
+      restaurantID: $restaurantID
       sortDirection: $sortDirection
       filter: $filter
       limit: $limit
@@ -171,20 +222,133 @@ export const commentsByPostID = /* GraphQL */ `
       items {
         id
         message
-        post {
+        restaurant {
           id
           title
           content
           username
-          coverImage
+          generalImages
+          lat
+          lng
+          price
           createdAt
           updatedAt
           __typename
         }
-        postID
+        restaurantID
         createdAt
         updatedAt
-        createdBy
+        postedBy
+        __typename
+      }
+      nextToken
+      __typename
+    }
+  }
+`;
+export const getRate = /* GraphQL */ `
+  query GetRate($id: ID!) {
+    getRate(id: $id) {
+      id
+      rate_value
+      restaurant {
+        id
+        title
+        content
+        username
+        generalImages
+        comments {
+          nextToken
+          __typename
+        }
+        rates {
+          nextToken
+          __typename
+        }
+        lat
+        lng
+        price
+        createdAt
+        updatedAt
+        __typename
+      }
+      restaurantID
+      createdAt
+      updatedAt
+      ratedBy
+      __typename
+    }
+  }
+`;
+export const listRates = /* GraphQL */ `
+  query ListRates(
+    $filter: ModelRateFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listRates(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        rate_value
+        restaurant {
+          id
+          title
+          content
+          username
+          generalImages
+          lat
+          lng
+          price
+          createdAt
+          updatedAt
+          __typename
+        }
+        restaurantID
+        createdAt
+        updatedAt
+        ratedBy
+        __typename
+      }
+      nextToken
+      __typename
+    }
+  }
+`;
+export const ratesByRestaurantID = /* GraphQL */ `
+  query RatesByRestaurantID(
+    $restaurantID: ID!
+    $sortDirection: ModelSortDirection
+    $filter: ModelRateFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    ratesByRestaurantID(
+      restaurantID: $restaurantID
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        rate_value
+        restaurant {
+          id
+          title
+          content
+          username
+          generalImages
+          lat
+          lng
+          price
+          createdAt
+          updatedAt
+          __typename
+        }
+        restaurantID
+        createdAt
+        updatedAt
+        ratedBy
         __typename
       }
       nextToken
